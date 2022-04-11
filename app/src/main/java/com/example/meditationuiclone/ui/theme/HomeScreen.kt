@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -34,6 +35,7 @@ fun HomeScreen(){
             ChipSection(chips = listOf(
                 "Sweet Sleep", "Insomnia", "Depression", "Motivation", "History"
             ))
+            CurrentMeditation()
         }
     }
 }
@@ -104,4 +106,41 @@ fun ChipSection(
         }
     }
 
+}
+
+// current meditation!!
+@Composable
+fun CurrentMeditation(
+    color: Color = LightRed
+){
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+            .padding(15.dp)
+            .clip(RoundedCornerShape(10.dp))
+            .background(color)
+            .padding(horizontal = 15.dp, vertical = 20.dp)
+            .fillMaxWidth()
+    ){
+        Column {
+            Text(text = "Daily Thought", style = MaterialTheme.typography.h2)
+            Text(text = "Meditation * 3-10min", style = MaterialTheme.typography.body1, color = TextWhite)
+        }
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
+                .background(ButtonBlue)
+                .padding(10.dp)
+        ){
+            Icon(
+                painter = painterResource(id = R.drawable.ic_play),
+                contentDescription = "Play Icon",
+                tint = Color.White,
+                modifier = Modifier.size(16.dp)
+            )
+        }
+    }
 }
